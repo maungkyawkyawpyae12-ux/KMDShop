@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('voucher_no');
             $table->string('total');
             $table->string('qty');
-            $table->string('payment-slip');
+            $table->string('payment_slip');
             $table->string('status');
             $table->string('note');
             $table->unsignedBigInteger('item_id');
@@ -27,10 +27,10 @@ return new class extends Migration
             $table->foreign('payment_id')
             ->references('id')->on('payments')
             ->onDelete('cascade');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
-            ->references('id')->on('users')
-            ->onDelete('cascade');
+            // $table->unsignedBigInteger('user_id');
+            // $table->foreign('user_id')
+            // ->references('id')->on('users')
+            // ->onDelete('cascade');
             $table->softdeletes();
             $table->timestamps();
         });

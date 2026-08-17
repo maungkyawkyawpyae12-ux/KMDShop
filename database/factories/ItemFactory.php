@@ -18,14 +18,14 @@ class ItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'code_no'=>$this->faker->word(),
-            'name'=>$this->faker->word(),
-            'image'=>$this->faker->imageUrl(),
-            'price'=>$this->faker->randomFloat(2, 1, 100),  
-            'discount'=>$this->faker->randomFloat(2, 0, 50),
-            'in_stock'=>$this->faker->numberBetween(0, 100),
-            'description'=>$this->faker->paragraph(),
-            'category_id'=>$this->faker->numberBetween(1, 10),
+           'code_no' => fake()->unique()->numberBetween(100000, 999999),
+            'name' => fake()->word(),
+            'image' => fake()->imageUrl(),
+            'price' => fake()->randomFloat(2, 1, 100),
+            'discount' => fake()->randomFloat(2, 0, 50),
+            'on_stock' => fake()->numberBetween(0, 100),
+            'description' => fake()->paragraph(),
+            'category_id' => \App\Models\Category::factory(),
         ];
     }
 }

@@ -18,7 +18,8 @@ class PaymentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name'=>$this->faker->word(),
+            'logo'=>$this->faker->imageUrl()
         ];
     }
 }

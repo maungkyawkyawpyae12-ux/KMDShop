@@ -8,9 +8,9 @@ class FrontController extends Controller
 {
     public function shop()
    {
-       $item=Item::all();
+       $items=Item::OrderBy('id','desc')->paginate(8);
     //    var_dump($item);
-       return view('front.shop',compact('item'));
+       return view('front.shop',compact('items'));
    } 
     public function shopItem($id)
    {
