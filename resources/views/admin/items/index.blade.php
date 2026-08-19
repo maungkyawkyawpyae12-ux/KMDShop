@@ -2,6 +2,7 @@
 @section('content')
          <div class="container-fluid px-4">
                         <h1 class="mt-4">Item</h1>
+                        <a href="{{route('backend.items.create')}}" class="btn btn-primary float-end">Create Item</a>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
                             <li class="breadcrumb-item active">Items</li>
@@ -49,8 +50,8 @@
                                         <td>{{$item->in_stock}}</td>
                                         <td>{{$item->category_id}}</td>
                                         <td>
-                                            <a href="" class="btn btn-sn btn-warning">Edit</a>
-                                            <button class="btn btn-sn btn-danger">Delete</button>
+                                            <a href="" class="btn btn-sn btn-primary">Edit</a>
+                                            <button class="btn btn-sn btn-danger delete" data-id="{{$item->id}}">Delete</button>
                                         </td>
 
                                     </tr>
@@ -61,4 +62,14 @@
                             </div>
                         </div>
                     </div>
+@endsection
+@section('script')
+    <script>
+            $(document).ready(function(){
+                $('tbody').on('click','.delete',function(){
+                    let id=$(this).data('id');
+                    console.log(id);
+                })
+            })
+    </script>
 @endsection
