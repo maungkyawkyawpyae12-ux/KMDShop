@@ -12,7 +12,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        $payments=Payment::all();
+        $payments=Payment::OrderBy('id','desc')->paginate(3);
         return view('admin.payments.index',compact('payments'));
     }
 
@@ -21,7 +21,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.payment.create');
     }
 
     /**
