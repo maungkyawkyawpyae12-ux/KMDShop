@@ -8,7 +8,7 @@
         </div>
 
         <div class="card-body">
-            <form action="{{ route('backend.payments.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('backend.payments.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
 
 
@@ -38,10 +38,10 @@
                 <!-- Buttons -->
                 <div class="mt-3">
                     <button type="submit" class="btn btn-primary">
-                        Save Item
+                        Save Payment
                     </button>
 
-                    <a href="{{ route('backend.payments.index') }}" class="btn btn-secondary">
+                    <a href="{{route('backend.payments.index')}}" class="btn btn-secondary">
                         Cancel
                     </a>
                 </div>

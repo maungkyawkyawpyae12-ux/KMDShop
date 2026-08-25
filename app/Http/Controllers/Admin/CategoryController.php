@@ -83,7 +83,7 @@ class CategoryController extends Controller
                     }
                     $file_name=time().'.'.$request->imge->extension();
                     $request->image->move(public_path('images/categories'),$file_name);
-                    $category->image="image/categories/".$file_name;
+                    $category->image="images/categories/".$file_name;
             }
             $category->save();
             return redirect()->route('backend.categories.index')->with('success','Category update successfully');
