@@ -34,12 +34,42 @@
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
+                        <a href="{{route('item-carts.carts')}}" class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
+                        </a>
                     </form>
+                    @guest
+                    <a href="/login" class="btn mx-3">Login</a>
+                    <a href="/register" class="btn btn-dark">Register</a>
+                    @else
+                    <div class="dropdown mx-3">
+                            <a href="" class="text-decoration text-dark dropdown-toggle" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{Auth::user()->name}}
+                            </a>
+                            <ul class="dropdown-menu">
+                                @if(Auth::user()->role=="User") 
+                            <li>
+                                <a href="" class="dropdown-item">Profile</a>
+                            </li>
+                            @else
+                            <li>
+                                <a href="/backend" class="dropdown-item" >Admin Panel</a>
+                            </li>
+                            @endif
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                        </ul>
+                    </div>
+                   @endguest
                 </div>
             </div>
         </nav>

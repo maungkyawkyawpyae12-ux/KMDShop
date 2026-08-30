@@ -6,39 +6,39 @@
     </div>
  @endif
          <div class="container-fluid px-4">
-                        <h1 class="mt-4">Item</h1>
-                        <a href="{{route('backend.items.create')}}" class="btn btn-primary float-end">Create Item</a>
+                        <h1 class="mt-4">User</h1>
+                        <a href="{{route('backend.users.create')}}" class="btn btn-primary float-end">Create User</a>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Items</li>
+                            <li class="breadcrumb-item active">Users</li>
                         </ol>
                         
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Item Lists
+                                User Lists
                             </div>
                             <div class="card-body">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Code No</th>
                                             <th>Name</th>
-                                            <th>Price</th>
-                                            <th>Instock</th>
-                                            <th>Category</th>
+                                            <th>Phone</th>
+                                            <th>Profile</th>
+                                            <th>Email</th>
+                                            <th>Role</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                        <tr>
                                             <th>No.</th>
-                                            <th>Code No</th>
                                             <th>Name</th>
-                                            <th>Price</th>
-                                            <th>Instock</th>
-                                            <th>Category</th>
+                                            <th>Phone</th>
+                                            <th>Profile</th>
+                                            <th>Email</th>
+                                            <th>Role</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
@@ -46,23 +46,23 @@
                                     @php
                                     $i=1;
                                     @endphp
-                                    @foreach($items as $item)
+                                    @foreach($users as $user)
                                     <tr>
                                         <td>{{$i++}}</td>
-                                        <td>{{$item->code_no}}</td>
-                                        <td>{{$item->name}}</td>
-                                        <td>{{$item->price}}</td>
-                                        <td>{{$item->in_stock}}</td>
-                                        <td>{{$item->category->name}}</td>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->phone}}</td>
+                                        <td>{{$user->profile}}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>{{$user->role}}</td>
                                         <td>
-                                            <a href="{{route('backend.items.edit',$item->id)}}" class="btn btn-sn btn-primary">Edit</a>
-                                            <button class="btn btn-sn btn-danger delete" data-id="{{$item->id}}">Delete</button>
+                                            <a href="{{route('backend.users.edit',$user->id)}}" class="btn btn-sm btn-primary">Edit</a>
+                                            <button class="btn btn-sm btn-danger delete" data-id="{{$user->id}}">Delete</button>
                                         </td>
 
                                     </tr>
                                     @endforeach
                                    </tbody>
-                                   {{$items->links()}}
+                                   {{$users->links()}}
                                 </table>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-danger text-light">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Item</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete User</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -105,7 +105,7 @@
                 $('tbody').on('click','.delete',function(){
                     let id=$(this).data('id');
                     // console.log(id);
-                    $('#deleteForm').attr('action',`items/${id}`);
+                    $('#deleteForm').attr('action', `{{ url('backend/users') }}/${id}`);
                     $('#deleteModal').modal('show');
 
                 })
